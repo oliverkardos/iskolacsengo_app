@@ -9,7 +9,7 @@ namespace iskolacsengo
     static class Program
     {
         /// <summary>
-        /// The main entry point for the application. v1
+        /// The main entry point for the application. v1teszt
         /// </summary>
         [STAThread]
         static void Main()
