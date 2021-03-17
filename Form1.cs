@@ -16,5 +16,20 @@ namespace iskolacsengo
         {
             InitializeComponent();
         }
+
+        private void actualTime_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            actualTime.Text = DateTime.Now.ToString("HH:mm:ss");
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
