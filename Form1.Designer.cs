@@ -33,6 +33,8 @@ namespace iskolacsengo
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadConfigurationFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -69,6 +71,24 @@ namespace iskolacsengo
             this.loadConfigurationFileToolStripMenuItem.Text = "Load configuration file...";
             this.loadConfigurationFileToolStripMenuItem.Click += new System.EventHandler(this.loadConfigurationFileToolStripMenuItem_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Courier New", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(105, 156);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(150, 41);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "label1";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(115, 228);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(222, 31);
+            this.textBox1.TabIndex = 2;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -76,6 +96,8 @@ namespace iskolacsengo
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = global::iskolacsengo.Properties.Resources.school_hallway_beta;
             this.ClientSize = new System.Drawing.Size(984, 461);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.MaximumSize = new System.Drawing.Size(1000, 500);
@@ -83,6 +105,7 @@ namespace iskolacsengo
             this.Name = "Form1";
             this.Text = "Iskolacsengő Applikáció";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Validated += new System.EventHandler(this.Form1_Validated);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -94,6 +117,8 @@ namespace iskolacsengo
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadConfigurationFileToolStripMenuItem;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBox1;
 
         #endregion
         //    private System.Windows.Forms.Label label1;

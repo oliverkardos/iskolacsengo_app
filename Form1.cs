@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Csengo_utemezes;
+using System.Globalization;
 
 namespace iskolacsengo
 {
@@ -19,21 +20,22 @@ namespace iskolacsengo
             InitializeComponent();
         }
 
-        private void actualTime_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            //actualTime.Text = DateTime.Now.ToString("HH:mm:ss");
-        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            
         }
-
+        private void idoKezeles()
+        {
+            while(true)
+            {
+                DateTime dt = DateTime.Now;
+                label1.Text = dt.ToString("HH:mm:ss");
+                String currentTimeString = dt.ToString("yyyy:MM:dd:HH:mm").Replace(":","");
+                textBox1.Text = currentTimeString;
+                Task.Delay(200).Wait();
+            }
+        }
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Environment.Exit(0);
@@ -42,7 +44,6 @@ namespace iskolacsengo
         private void loadConfigurationFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var filePath = "";
-            FileDialog fd;
             using(OpenFileDialog ofd = new OpenFileDialog())
             {
                 ofd.InitialDirectory = Application.ExecutablePath.ToString();
@@ -55,6 +56,12 @@ namespace iskolacsengo
                 }
             }
             sched = new Utemezes(filePath);
+            idoKezeles();
+        }
+
+        private void Form1_Validated(object sender, EventArgs e)
+        {
+
         }
     }
 }

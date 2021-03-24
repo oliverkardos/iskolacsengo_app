@@ -61,6 +61,25 @@ namespace Csengo_utemezes
             rulesFilePath = fp;
             loadBells();
         }
+        public Boolean isLoaded()
+        {
+            if (napok.Count == 0)
+            {
+                return false;
+            }
+            else
+                return true;
+        }
+        public Boolean isBell(String time)
+        {
+            Nap temp = new Nap(time, true);
+            if (napok.Contains(temp) == true)
+            {
+                return true;
+            }
+            else
+                return false;
+        }
         public void loadBells()
         {
             List<String> daysOfWeek = new List<string>();
