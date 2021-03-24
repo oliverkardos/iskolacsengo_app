@@ -1,0 +1,32 @@
+//Sort kikommentelni a két perjellel lehet
+//Csak kisbetűvel dolgozunk, üres sorokat figyelmen kívül hagyja
+
+//a következő módon állíthatunk be csengőt:
+//vagy megadunk egy tartományt:
+from 2021/03/01 to 2021/03/05
+//beállítva azt hogy "every"...
+// - day
+// - weekday
+// - weekend
+// - nap neve
+every day
+//majd jön a "set bell" és a csengők felsorolása
+//szóközzel elválasztva. Fontos, hogy a vezető
+//nullát ne írjuk ki!
+set bell 9:00
+
+
+
+//Második szabály
+on 2021/04/01
+set bell 6:55
+
+//harmadik szabály (itt nem fog egy csengőt sem beállítani)
+from 2021/03/23 to 2021/03/26
+every weekend
+set bell 10:00 11:30 13:55
+
+
+//Negyedik szabály
+on 2021/04/02 2021/04/02 2021/04/22 2021/04/29
+set bell 19:2 20:59 23:24
