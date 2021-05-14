@@ -7,6 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Security;
+using System.Data.SqlClient;
+using System.Data.Sql;
 
 namespace iskolacsengo
 {
