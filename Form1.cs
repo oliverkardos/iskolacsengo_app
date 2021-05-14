@@ -31,7 +31,7 @@ namespace iskolacsengo
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            //label1.Text = DateTime.Now.ToString("HH:mm:ss");
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -44,6 +44,16 @@ namespace iskolacsengo
             openFileDialog1.Filter = "(mp3,wav,mp4,mov,wmv,mpg)|*.mp3;*.wav;*.mp4;*.mov;*.wmv;*.mpg|all files|*.*";
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 axWindowsMediaPlayer1.URL = openFileDialog1.FileName;
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            axWindowsMediaPlayer1.URL = openFileDialog1.FileName;
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
 
         }
     }
