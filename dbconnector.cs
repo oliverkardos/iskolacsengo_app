@@ -9,7 +9,7 @@ using System.Data.SqlClient;
 
 namespace iskolacsengo
 {
-    class dbconnector
+    class dbconnector : Form1
     {
         // db connector for sqlite
         /*
