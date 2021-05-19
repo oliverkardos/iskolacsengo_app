@@ -120,7 +120,7 @@ namespace iskolacsengo
             button7.Enabled = false;
 
            // System.Windows.Forms.Timer MyTimer = new System.Windows.Forms.Timer();
-            MyTimer.Interval = (45 * 60 * 1000); // 45 mins
+            MyTimer.Interval = (1 * 60 * 1000); // 45 mins
             MyTimer.Tick += new EventHandler(button3_Click);
             MyTimer.Start();
 
@@ -240,10 +240,21 @@ namespace iskolacsengo
             determineFirstBellTime();
         }
 
-         
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            //button2.Enabled = true;
+            //btnPlayRingtone.Enabled = false;
+            //button4.Enabled = false;
+            //button6.Enabled = false;
+            //button7.Enabled = false;
 
-          
+            //// System.Windows.Forms.Timer MyTimer = new System.Windows.Forms.Timer();
+            //MyTimer.Interval = (45 * 60 * 1000); // 45 mins
+            //MyTimer.Tick += new EventHandler(button3_Click);
+            //MyTimer.Start();
+            determineFirstBellTime(); //this also handles event launches
         }
+    }
 
 
     }
