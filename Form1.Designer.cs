@@ -39,7 +39,7 @@ namespace iskolacsengo
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
             this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnPlayRingtone = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -132,19 +132,19 @@ namespace iskolacsengo
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button3
+            // btnPlayRingtone
             // 
-            this.button3.BackColor = System.Drawing.Color.Gold;
-            this.button3.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.button3.Location = new System.Drawing.Point(559, 187);
-            this.button3.Margin = new System.Windows.Forms.Padding(4);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(152, 73);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "Próba csengetés";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnPlayRingtone.BackColor = System.Drawing.Color.Gold;
+            this.btnPlayRingtone.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPlayRingtone.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btnPlayRingtone.Location = new System.Drawing.Point(559, 187);
+            this.btnPlayRingtone.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPlayRingtone.Name = "btnPlayRingtone";
+            this.btnPlayRingtone.Size = new System.Drawing.Size(152, 73);
+            this.btnPlayRingtone.TabIndex = 8;
+            this.btnPlayRingtone.Text = "Csengetés most";
+            this.btnPlayRingtone.UseVisualStyleBackColor = false;
+            this.btnPlayRingtone.Click += new System.EventHandler(this.button3_Click);
             // 
             // button6
             // 
@@ -218,7 +218,7 @@ namespace iskolacsengo
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btnPlayRingtone);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.axWindowsMediaPlayer1);
             this.Controls.Add(this.button4);
@@ -246,7 +246,7 @@ namespace iskolacsengo
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnPlayRingtone;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Label label1;

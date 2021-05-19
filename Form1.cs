@@ -12,29 +12,11 @@ using System.Security;
 using System.Data.SQLite;
 using System.Data.SqlClient;
 using System.Threading;
+using System.Timers;
 
 
 namespace iskolacsengo
 {
-
-    public class ThreadWork
-    {
-        public static void CsengoAktiv(List<int>starthr)
-        {
-            do
-            {
-                string timeH = DateTime.Now.ToString("h");
-                int timeHH = Convert.ToInt32(timeH);
-                string timeM = DateTime.Now.ToString("mm");
-                int timeMM = Convert.ToInt32(timeM);
-                if (starthr.Contains(timeMM))
-                {
-                    starthr.
-                    starthr.Remove(timeMM);
-                }
-            }
-        }
-    }
 
     public partial class Form1 : Form
     {
@@ -72,11 +54,16 @@ namespace iskolacsengo
         private void button1_Click(object sender, EventArgs e)
         {
             button2.Enabled = true;
-            button3.Enabled = false;
+            btnPlayRingtone.Enabled = false;
             button4.Enabled = false;
         //    button5.Enabled = false;//deleted btn
             button6.Enabled = false;
             button7.Enabled = false;
+
+            System.Windows.Forms.Timer MyTimer = new System.Windows.Forms.Timer();
+            MyTimer.Interval = (45 * 60 * 1000); // 45 mins
+            MyTimer.Tick += new EventHandler(button3_Click);
+            MyTimer.Start();
 
         }
 
@@ -166,11 +153,51 @@ namespace iskolacsengo
                 dt2.Rows.Add(splitatcomma);
             }
 
-            Thread thread1 = new Thread(ThreadWork.CsengoAktiv);
-            thread1.Start();
+           // Thread thread1 = new Thread(ThreadWork.CsengoAktiv);
+            ///thread1.Start();
 
             dataGridView1.DataSource = dt2;
             sr.Close();
         }
+
+        //private void alarmclock()
+        //{
+        //    var timer = new Timer
+        //    {
+        //        AutoReset = false,
+        //        Interval = getMillisecondsToNextAlarm()
+        //    };
+        //    timer.Elapsed += (src, args) =>
+        //    {
+        //        // Do timer handling here.
+
+        //        timer.Interval = getMillisecondsToNextAlarm();
+        //        timer.Start();
+        //    };
+        //    timer.Start();
+        //}
+
+
     }
-}
+
+    //public class ThreadWork
+    //{
+    //    public static void CsengoAktiv(List<int> starthr)
+    //    {
+    //        do
+    //        {
+    //            string timeH = DateTime.Now.ToString("h");
+    //            int timeHH = Convert.ToInt32(timeH);
+    //            string timeM = DateTime.Now.ToString("mm");
+    //            int timeMM = Convert.ToInt32(timeM);
+    //            //if (starthr.Contains(timeMM))
+    //            //{
+    //            //    //starthr.
+    //            //    //starthr.Remove(timeMM);
+    //            //}
+    //        }
+    //        }
+    //    }
+
+
+    }
