@@ -22,14 +22,12 @@ namespace iskolacsengo
     {
         public string dbfilepath = "default.db";
         string textfilepath = null;
-        // bool dbfileselected = false;
         SQLiteCommand dbreadcommand;
         List<int> ids = new List<int>();
         List<int> starthr = new List<int>();
         List<int> startmm = new List<int>();
         List<int> endhr = new List<int>();
         List<int> endmm = new List<int>();
-        // SQLiteCommand dbwritecommand;
         public Form1()
         {
             InitializeComponent();
@@ -56,7 +54,6 @@ namespace iskolacsengo
             button2.Enabled = true;
             btnPlayRingtone.Enabled = false;
             button4.Enabled = false;
-        //    button5.Enabled = false;//deleted btn
             button6.Enabled = false;
             button7.Enabled = false;
 
@@ -94,23 +91,7 @@ namespace iskolacsengo
 
         private void button6_Click(object sender, EventArgs e)
         {
-            //broken - file url is not passed correctly, if it is not in "" it wont work (it cannot see the table)
-            //  // Import a database file and use it
-            //  openFileDialog2.InitialDirectory = @"C:\";
-            //  openFileDialog2.Title = "Select your SQLITE database file";
-            //  openFileDialog2.DefaultExt = "db";
-            //  openFileDialog2.Filter = "SQLITE DB files (*.db)|*.db|SQLITE files with sqlite extension (*.sqlite)|*.sqlite|All files (*.*)|*.*";
-            //  openFileDialog2.FilterIndex = 1;
-            ////  openFileDialog2.ShowDialog();
-            //   if (openFileDialog2.ShowDialog() == DialogResult.OK)
-            //  {
-            //   dbfilepath = openFileDialog1.FileName;
-            //      drawSchedule();
-
-            //  }
             drawSchedule();
-
-
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -153,51 +134,14 @@ namespace iskolacsengo
                 dt2.Rows.Add(splitatcomma);
             }
 
-           // Thread thread1 = new Thread(ThreadWork.CsengoAktiv);
-            ///thread1.Start();
+         
 
             dataGridView1.DataSource = dt2;
             sr.Close();
         }
 
-        //private void alarmclock()
-        //{
-        //    var timer = new Timer
-        //    {
-        //        AutoReset = false,
-        //        Interval = getMillisecondsToNextAlarm()
-        //    };
-        //    timer.Elapsed += (src, args) =>
-        //    {
-        //        // Do timer handling here.
-
-        //        timer.Interval = getMillisecondsToNextAlarm();
-        //        timer.Start();
-        //    };
-        //    timer.Start();
-        //}
-
 
     }
-
-    //public class ThreadWork
-    //{
-    //    public static void CsengoAktiv(List<int> starthr)
-    //    {
-    //        do
-    //        {
-    //            string timeH = DateTime.Now.ToString("h");
-    //            int timeHH = Convert.ToInt32(timeH);
-    //            string timeM = DateTime.Now.ToString("mm");
-    //            int timeMM = Convert.ToInt32(timeM);
-    //            //if (starthr.Contains(timeMM))
-    //            //{
-    //            //    //starthr.
-    //            //    //starthr.Remove(timeMM);
-    //            //}
-    //        }
-    //        }
-    //    }
 
 
     }
