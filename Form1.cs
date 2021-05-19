@@ -28,7 +28,9 @@ namespace iskolacsengo
         int LengthOfBreaksInMinutes = 10;
         int StartTimeOfFirstClassHour = 8;
         int StartTimeOfFirstClassMinute = 0;
-
+        bool offsetenabled = false;
+        System.Windows.Forms.Timer MyTimer = new System.Windows.Forms.Timer();
+        System.Windows.Forms.Timer MyTimerForBreaks = new System.Windows.Forms.Timer();
         public Form1()
         {
             InitializeComponent();
@@ -51,10 +53,38 @@ namespace iskolacsengo
             //int currentmin = Convert.ToInt16(currentmin_s);
 
             // are we on time?
-            if (DateTime.Now.Hour == 1 && DateTime.Now.Minute == 0)
+            // determine if we are ahead of first lesson
+            DateTime currentTime = DateTime.Now;
+            
+            if (currentTime.Hour <= StartTimeOfFirstClassHour && !offsetenabled)
             {
-                // do whatever
+                if (currentTime.Minute <= StartTimeOfFirstClassMinute)
+                {
+                    offsetenabled = true;
+                    // we are before the first class
+                    // calculate offset
+                    int offset = currentTime.Minute - StartTimeOfFirstClassMinute;
+                    MyTimer.Interval = (offset * 60 * 1000); // mins
+                    MyTimer.Tick += new EventHandler(button3_Click);
+                    MyTimer.Start();
+                }
+            else
+                {
+                    // regular mode
+                    MyTimer.Interval = (LengthOfClassesInMinutes * 60 * 1000); // mins
+                    MyTimer.Tick += new EventHandler(button3_Click);
+                    MyTimer.Start();
+
+                    int calculatebreakintervals = LengthOfClassesInMinutes + LengthOfBreaksInMinutes;
+                    MyTimerForBreaks.Interval = (calculatebreakintervals * 60 * 1000); // mins
+                    MyTimerForBreaks.Tick += new EventHandler(button3_Click);
+                    MyTimerForBreaks.Start();
+
+
+                }
             }
+           
+
 
         }
 
@@ -88,7 +118,7 @@ namespace iskolacsengo
             button6.Enabled = false;
             button7.Enabled = false;
 
-            System.Windows.Forms.Timer MyTimer = new System.Windows.Forms.Timer();
+           // System.Windows.Forms.Timer MyTimer = new System.Windows.Forms.Timer();
             MyTimer.Interval = (45 * 60 * 1000); // 45 mins
             MyTimer.Tick += new EventHandler(button3_Click);
             MyTimer.Start();
@@ -120,14 +150,30 @@ namespace iskolacsengo
             sqliteconn.closeConnection();
 
 
-            foreach (var row in dt.AsEnumerable())
+            //foreach (var row in dt.AsEnumerable())
+            //{
+            //    //   int id = row.Field<int>("ID");
+            //    LengthOfClassesInMinutes = Convert.ToInt16(row.Field<int>("LengthOfClassesInMinutes"));
+            //    LengthOfBreaksInMinutes = row.Field<int>("LengthOfBreaksInMinutes");
+            //    StartTimeOfFirstClassHour = row.Field<int>("StartTimeOfFirstClassHour");
+            //    StartTimeOfFirstClassMinute = row.Field<int>("StartTimeOfFirstClassMinute");
+            //}
+
+            DataRow[] dr = dt.Select("ID=1");
+            var lessons = "";
+            var breaks = "";
+            var firsthr = "";
+            var firstmm="";
+            foreach (DataRow row in dr)
             {
-                int id = row.Field<int>("ID");
-                LengthOfClassesInMinutes = row.Field<int>("LengthOfClassesInMinutes"); 
-                LengthOfBreaksInMinutes = row.Field<int>("LengthOfBreaksInMinutes");
-                StartTimeOfFirstClassHour = row.Field<int>("StartTimeOfFirstClassHour"); 
-                StartTimeOfFirstClassMinute = row.Field<int>("StartTimeOfFirstClassMinute");
+                lessons = row["LengthOfClassesInMinutes"].ToString();
+                breaks = row["LengthOfBreaksInMinutes"].ToString();
+                firsthr = row["StartTimeOfFirstClassHour"].ToString();
+                firstmm = row["StartTimeOfFirstClassMinute"].ToString();
             }
+            StartTimeOfFirstClassHour = Convert.ToInt16(firsthr);
+            StartTimeOfFirstClassMinute = Convert.ToInt16(firstmm);
+            determineFirstBellTime();
 
         }
 
@@ -142,7 +188,10 @@ namespace iskolacsengo
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            MyTimer.Stop();
+            MyTimerForBreaks.Stop();
+            button6.Enabled = true;
+            button7.Enabled = true;
         }
 
         private void button7_Click(object sender, EventArgs e)
