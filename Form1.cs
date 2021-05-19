@@ -22,14 +22,13 @@ namespace iskolacsengo
     {
         public string dbfilepath = "default.db";
         string textfilepath = null;
-        // bool dbfileselected = false;
+        string ringtone = "bell.mp3";
         SQLiteCommand dbreadcommand;
         List<int> ids = new List<int>();
         List<int> starthr = new List<int>();
         List<int> startmm = new List<int>();
         List<int> endhr = new List<int>();
         List<int> endmm = new List<int>();
-        // SQLiteCommand dbwritecommand;
         public Form1()
         {
             InitializeComponent();
@@ -61,8 +60,10 @@ namespace iskolacsengo
             button7.Enabled = false;
 
             System.Windows.Forms.Timer MyTimer = new System.Windows.Forms.Timer();
-            MyTimer.Interval = (45 * 60 * 1000); // 45 mins
+            // MyTimer.Interval = (45 * 60 * 1000); // 45 mins
+            MyTimer.Interval = (1 * 60 * 1000); // 1 min
             MyTimer.Tick += new EventHandler(button3_Click);
+            MyTimer.Tick += button3_Click;
             MyTimer.Start();
 
         }
@@ -71,13 +72,18 @@ namespace iskolacsengo
         {
             openFileDialog1.Filter = "(mp3,wav,mp4,mov,wmv,mpg)|*.mp3;*.wav;*.mp4;*.mov;*.wmv;*.mpg|all files|*.*";
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                // axWindowsMediaPlayer1.URL = openFileDialog1.FileName;
+                ringtone = openFileDialog1.FileName;
                 axWindowsMediaPlayer1.URL = openFileDialog1.FileName;
 
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            axWindowsMediaPlayer1.URL = openFileDialog1.FileName;
+            //axWindowsMediaPlayer1.URL = openFileDialog1.FileName;
+            axWindowsMediaPlayer1.URL = ringtone;
+          
+
         }
 
         private void drawSchedule()
