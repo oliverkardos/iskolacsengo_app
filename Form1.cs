@@ -11,7 +11,7 @@ using System.IO;
 using System.Security;
 using System.Data.SQLite;
 using System.Data.SqlClient;
-using System.Threading;
+//using System.Threading;
 using System.Timers;
 
 
@@ -23,7 +23,7 @@ namespace iskolacsengo
         public string dbfilepath = "default.db";
         string textfilepath = null;
         SQLiteCommand dbreadcommand;
-
+      //  System.Timers.Timer timer;
         int LengthOfClassesInMinutes = 45;
         int LengthOfBreaksInMinutes = 10;
         int StartTimeOfFirstClassHour = 8;
@@ -44,14 +44,17 @@ namespace iskolacsengo
         {
             // get actual time
             // StartTimeOfFirstClassHour
-            string currenttime = DateTime.Now.ToString("HH:mm:ss");
-            string currenthour_s = DateTime.Now.ToString("HH");
-            string currentmin_s = DateTime.Now.ToString("mm");
-            int currenthour = Convert.ToInt16(currenthour_s);
-            int currentmin = Convert.ToInt16(currentmin_s);
+            //string currenttime = DateTime.Now.ToString("HH:mm:ss");
+            //string currenthour_s = DateTime.Now.ToString("HH");
+            //string currentmin_s = DateTime.Now.ToString("mm");
+            //int currenthour = Convert.ToInt16(currenthour_s);
+            //int currentmin = Convert.ToInt16(currentmin_s);
 
             // are we on time?
-
+            if (DateTime.Now.Hour == 1 && DateTime.Now.Minute == 0)
+            {
+                // do whatever
+            }
 
         }
 
@@ -63,7 +66,19 @@ namespace iskolacsengo
         private void Form1_Load(object sender, EventArgs e)
         {
             //label1.Text = DateTime.Now.ToString("HH:mm:ss");
+            //timer = new System.Timers.Timer();
+            //timer.Interval = 1000;
+            //timer.Elapsed += Timer_Elapsed;
+
         }
+
+        //private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        //{
+        //    //  throw new NotImplementedException();
+        //    //DateTime currentTime = DateTime.Now;
+        //    //DateTime userTime = dateTimePicker.Value;
+        //    //if (currentTime.Hour == userTime.Hour)
+        //}
 
         private void button1_Click(object sender, EventArgs e)
         {
