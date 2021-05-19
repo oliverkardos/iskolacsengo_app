@@ -33,7 +33,6 @@ namespace iskolacsengo
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.actualTime = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.button1 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
@@ -47,6 +46,7 @@ namespace iskolacsengo
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -69,24 +69,17 @@ namespace iskolacsengo
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // monthCalendar1
-            // 
-            this.monthCalendar1.Location = new System.Drawing.Point(683, 276);
-            this.monthCalendar1.Margin = new System.Windows.Forms.Padding(12, 11, 12, 11);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.TabIndex = 1;
-            // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.YellowGreen;
             this.button1.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(12, 278);
+            this.button1.Location = new System.Drawing.Point(559, 268);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(152, 73);
+            this.button1.Size = new System.Drawing.Size(312, 53);
             this.button1.TabIndex = 2;
-            this.button1.Text = "Csengő aktiválása";
+            this.button1.Text = "Teszt: csengetés percenként";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -95,12 +88,12 @@ namespace iskolacsengo
             this.button4.BackColor = System.Drawing.Color.Gold;
             this.button4.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.button4.Location = new System.Drawing.Point(332, 278);
+            this.button4.Location = new System.Drawing.Point(369, 187);
             this.button4.Margin = new System.Windows.Forms.Padding(4);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(205, 73);
+            this.button4.Size = new System.Drawing.Size(153, 73);
             this.button4.TabIndex = 5;
-            this.button4.Text = "Csengőhang kiválasztása...";
+            this.button4.Text = "Csengőhang beállítása";
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
@@ -115,7 +108,7 @@ namespace iskolacsengo
             this.axWindowsMediaPlayer1.Margin = new System.Windows.Forms.Padding(4);
             this.axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
             this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
-            this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(534, 46);
+            this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(359, 46);
             this.axWindowsMediaPlayer1.TabIndex = 6;
             // 
             // button2
@@ -123,7 +116,7 @@ namespace iskolacsengo
             this.button2.BackColor = System.Drawing.Color.Maroon;
             this.button2.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(172, 278);
+            this.button2.Location = new System.Drawing.Point(370, 106);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(152, 73);
@@ -140,7 +133,7 @@ namespace iskolacsengo
             this.btnPlayRingtone.Location = new System.Drawing.Point(559, 187);
             this.btnPlayRingtone.Margin = new System.Windows.Forms.Padding(4);
             this.btnPlayRingtone.Name = "btnPlayRingtone";
-            this.btnPlayRingtone.Size = new System.Drawing.Size(152, 73);
+            this.btnPlayRingtone.Size = new System.Drawing.Size(312, 73);
             this.btnPlayRingtone.TabIndex = 8;
             this.btnPlayRingtone.Text = "Csengetés most";
             this.btnPlayRingtone.UseVisualStyleBackColor = false;
@@ -204,15 +197,29 @@ namespace iskolacsengo
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(525, 208);
+            this.dataGridView1.Size = new System.Drawing.Size(350, 208);
             this.dataGridView1.TabIndex = 19;
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.YellowGreen;
+            this.button3.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.White;
+            this.button3.Location = new System.Drawing.Point(370, 25);
+            this.button3.Margin = new System.Windows.Forms.Padding(4);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(152, 73);
+            this.button3.TabIndex = 20;
+            this.button3.Text = "Csengő aktiválása";
+            this.button3.UseVisualStyleBackColor = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.ClientSize = new System.Drawing.Size(915, 562);
+            this.ClientSize = new System.Drawing.Size(915, 316);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -223,7 +230,6 @@ namespace iskolacsengo
             this.Controls.Add(this.axWindowsMediaPlayer1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.actualTime);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
@@ -240,7 +246,6 @@ namespace iskolacsengo
 
         private System.Windows.Forms.Label actualTime;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.MonthCalendar monthCalendar1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
@@ -254,6 +259,7 @@ namespace iskolacsengo
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog2;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button button3;
         //    private System.Windows.Forms.Label label1;
         //   private System.Windows.Forms.Button button1;
     }

@@ -23,11 +23,12 @@ namespace iskolacsengo
         public string dbfilepath = "default.db";
         string textfilepath = null;
         SQLiteCommand dbreadcommand;
-        List<int> ids = new List<int>();
-        List<int> starthr = new List<int>();
-        List<int> startmm = new List<int>();
-        List<int> endhr = new List<int>();
-        List<int> endmm = new List<int>();
+
+        int LengthOfClassesInMinutes = 45;
+        int LengthOfBreaksInMinutes = 10;
+        int StartTimeOfFirstClassHour = 8;
+        int StartTimeOfFirstClassMinute = 0;
+
         public Form1()
         {
             InitializeComponent();
@@ -36,6 +37,21 @@ namespace iskolacsengo
 
         private void actualTime_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void determineFirstBellTime()
+        {
+            // get actual time
+            // StartTimeOfFirstClassHour
+            string currenttime = DateTime.Now.ToString("HH:mm:ss");
+            string currenthour_s = DateTime.Now.ToString("HH");
+            string currentmin_s = DateTime.Now.ToString("mm");
+            int currenthour = Convert.ToInt16(currenthour_s);
+            int currentmin = Convert.ToInt16(currentmin_s);
+
+            // are we on time?
+
 
         }
 
@@ -87,11 +103,26 @@ namespace iskolacsengo
             dataGridView1.DataSource = dt;
             dt.Load(dbreader);
             sqliteconn.closeConnection();
+
+
+            foreach (var row in dt.AsEnumerable())
+            {
+                int id = row.Field<int>("ID");
+                LengthOfClassesInMinutes = row.Field<int>("LengthOfClassesInMinutes"); 
+                LengthOfBreaksInMinutes = row.Field<int>("LengthOfBreaksInMinutes");
+                StartTimeOfFirstClassHour = row.Field<int>("StartTimeOfFirstClassHour"); 
+                StartTimeOfFirstClassMinute = row.Field<int>("StartTimeOfFirstClassMinute");
+            }
+
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
             drawSchedule();
+            determineFirstBellTime();
+            button6.Enabled = false;
+            button7.Enabled = false;
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -102,7 +133,8 @@ namespace iskolacsengo
         private void button7_Click(object sender, EventArgs e)
         {
 
-           
+            button6.Enabled = false;
+            button7.Enabled = false;
             openFileDialog1.InitialDirectory = @"C:\";
             openFileDialog1.Title = "Select your TEXT CSV database file";
             openFileDialog1.DefaultExt = "csv";
@@ -115,33 +147,38 @@ namespace iskolacsengo
             dt2.Clear(); // just to be safe, in case this isnt the first file
                          // manual fill
                          // first the headers
-            dt2.Columns.Add("ID", typeof(int));
-            dt2.Columns.Add("StartHour", typeof(int));
-            dt2.Columns.Add("StartMin", typeof(int));
-            dt2.Columns.Add("EndHour", typeof(int));
-            dt2.Columns.Add("EndMin", typeof(int));
-           
+          //  dt2.Columns.Add("ID", typeof(int));
+            dt2.Columns.Add("LengthOfClassesInMinutes", typeof(int));
+            dt2.Columns.Add("LengthOfBreaksInMinutes", typeof(int));
+            dt2.Columns.Add("StartTimeOfFirstClassHOUR", typeof(int));
+            dt2.Columns.Add("StartTimeOfFirstClassMINUTE", typeof(int));
+
+//            string firstline = sr.ReadLine();
+
             string linebylineread;
             while ((linebylineread = sr.ReadLine()) != null)
             {
-                // string linebylineread = sr.ReadLine();
                 string[] splitatcomma = linebylineread.Split(';');
-                ids.Add(Convert.ToInt16(splitatcomma[0]));
-                starthr.Add(Convert.ToInt16(splitatcomma[1]));
-                startmm.Add(Convert.ToInt16(splitatcomma[2]));
-                endhr.Add(Convert.ToInt16(splitatcomma[3]));
-                endmm.Add(Convert.ToInt16(splitatcomma[4]));
+                LengthOfClassesInMinutes = Convert.ToInt16(splitatcomma[1]);
+                LengthOfBreaksInMinutes = Convert.ToInt16(splitatcomma[2]);
+                StartTimeOfFirstClassHour = Convert.ToInt16(splitatcomma[3]);
+                StartTimeOfFirstClassMinute = Convert.ToInt16(splitatcomma[4]);
                 dt2.Rows.Add(splitatcomma);
+                // dt2.Rows.Add(LengthOfClassesInMinutes, LengthOfBreaksInMinutes, StartTimeOfFirstClassHour, StartTimeOfFirstClassMinute);
+                //dt2.Rows.Add(new object[] { LengthOfClassesInMinutes, LengthOfBreaksInMinutes, StartTimeOfFirstClassHour, StartTimeOfFirstClassMinute });
+                
             }
+            dataGridView1.DataSource = dt2;
+            sr.Close();
+            determineFirstBellTime();
+        }
 
          
 
-            dataGridView1.DataSource = dt2;
-            sr.Close();
+          
         }
 
 
     }
 
 
-    }
